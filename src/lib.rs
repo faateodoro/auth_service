@@ -1,10 +1,5 @@
 #![allow(dead_code, unused_variables)]
 
-pub struct Credentials {
-    username: String,
-    password: String
-}
-
 mod database {
     enum Status {
         Connected,
@@ -28,6 +23,13 @@ mod auth_utils {
     
     fn logout() {
         // log user out
+    }
+
+    mod models{
+        pub struct Credentials {
+            username: String,
+            password: String
+        }
     }
 }
 
