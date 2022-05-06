@@ -20,13 +20,15 @@ mod database {
     }
 }
 
-pub fn login(creds: Credentials) {
-    // authenticate
-    get_user();
-}
-
-fn logout() {
-    // log user out
+mod auth_utils {
+    pub fn login(creds: Credentials) {
+        // authenticate
+        get_user();
+    }
+    
+    fn logout() {
+        // log user out
+    }
 }
 
 fn authenticate(creds: Credentials) {
