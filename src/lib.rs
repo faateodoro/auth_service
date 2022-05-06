@@ -1,39 +1,9 @@
 #![allow(dead_code, unused_variables)]
 
-mod database {
-    pub enum Status {
-        Connected,
-        Interrupted
-    }
+mod database;
+mod auth_utils;
 
-    pub fn connect_to_database() -> Status {
-        Status::Connected
-    }
-
-    pub fn get_user() {
-        // get user from database
-    }
-}
-
-mod auth_utils {
-    pub fn login(creds: models::Credentials) {
-        // authenticate
-        crate::database::get_user();
-    }
-    
-    fn logout() {
-        // log user out
-    }
-
-    pub mod models{
-        pub struct Credentials {
-            username: String,
-            password: String
-        }
-    }
-}
-
-use auth_utils::models::Credentials;
+pub use auth_utils::models::Credentials;
 use database::Status;
 
 fn authenticate(creds: Credentials) {
