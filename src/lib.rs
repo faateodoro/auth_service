@@ -1,31 +1,31 @@
 #![allow(dead_code, unused_variables)]
 
 mod database {
-    enum Status {
+    pub enum Status {
         Connected,
         Interrupted
     }
 
-    fn connect_to_database() -> Status {
+    pub fn connect_to_database() -> Status {
         Status::Connected
     }
 
-    fn get_user() {
+    pub fn get_user() {
         // get user from database
     }
 }
 
 mod auth_utils {
-    pub fn login(creds: Credentials) {
+    pub fn login(creds: models::Credentials) {
         // authenticate
-        get_user();
+        crate::database::get_user();
     }
     
     fn logout() {
         // log user out
     }
 
-    mod models{
+    pub mod models{
         pub struct Credentials {
             username: String,
             password: String
@@ -33,8 +33,8 @@ mod auth_utils {
     }
 }
 
-fn authenticate(creds: Credentials) {
-    if let Status::Connected = connect_to_database() {
-        login(creds);
+fn authenticate(creds: auth_utils::models::Credentials) {
+    if let database::Status::Connected = database::connect_to_database() {
+        auth_utils::login(creds);
     }
 }
